@@ -1,8 +1,8 @@
 module.exports= thoughtsData=[{
-    thoughtText:"This a text",
+    thoughtText:"This is some writing",
     username:"Username"
 },
 {
-    thoughtText:"This a text",
+    thoughtText:"This is some writing",
     username:"Username"
 }]
