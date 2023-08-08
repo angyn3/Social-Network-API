@@ -1,5 +1,5 @@
 const thoughts = require('../Models/thought')
-const uuser = require("../Models/user")
+const user = require("../Models/user")
 
 
 
@@ -14,7 +14,7 @@ const thoughtControllers={
             console.error(err)
         }
     },
-    // get thoughts by Id
+
     async thoughtById (req, res) {
         try {
             const getById = await thoughts.findOne({ _id: req.params.thoughtId })
@@ -49,7 +49,7 @@ try{
 
 
     
-    // delete thoughts by id
+
     async delThought(req, res) {
         try {
             const delThought = await thoughts.findOneAndDelete({ _id: req.params.thoughtId })
@@ -61,7 +61,7 @@ try{
             console.error(err)
         }
     },
-    // post reaction
+
      async postReaction(req, res)  {
         try {
             const addReaction = await thoughts.findOneAndUpdate(
@@ -114,11 +114,11 @@ try{
         }
     },
     
-    // post new thoughts
+
    async postThought(req, res){
        try {
             
-            const user = await uuser.findOneAndUpdate(  { _id: req.params.userId },
+            const user = await user.findOneAndUpdate(  { _id: req.params.userId },
                 { $push: { thoughts: req.params.thoughtId } },
                 { new: true })
 

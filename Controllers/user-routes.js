@@ -1,12 +1,12 @@
 
-const uuser = require('../Models/user');
+const user = require('../Models/user');
 
 
 const userControllers = {
     async getUsers(req, res) {
         try {
 
-            const user = await uuser.find()
+            const user = await user.find()
             res.status(200).json(user)
         } catch (err) {
             console.log(err)
@@ -16,12 +16,11 @@ const userControllers = {
     },
 
 
-    //Get By User Id
     async userById(req, res) {
 
         try {
 
-            const getById = await uuser.findOne({ _id: req.params.userId }).populate('thoughts').populate('friends');
+            const getById = await user.findOne({ _id: req.params.userId }).populate('thoughts').populate('friends');
 
             if (!getById) {
                 return res.status(404).json({ message: 'No user with that ID' });
@@ -38,7 +37,7 @@ const userControllers = {
     async updateUser(req, res) {
 try{
  
-    const update = await uuser.findOneAndUpdate(
+    const update = await user.findOneAndUpdate(
 
         { _id: req.params.userId },
         { $set: req.body },
@@ -52,10 +51,10 @@ try{
     console.error(err)
 }
     },
-    //Delete by user id
+
     async delById(req, res) {
         try {
-            const delUser = await uuser.findOneAndDelete({ _id: req.params.userId })
+            const delUser = await user.findOneAndDelete({ _id: req.params.userId })
             if (!delUser) {
                 return res.statusCode().json({ message: "Cant find this user " })
             }
@@ -66,10 +65,10 @@ try{
     },
 
 
-    // Delete friend by users userId
+
     async delFriend(req, res) {
         try {
-            const delFriend = await uuser.findOneAndUpdate(
+            const delFriend = await user.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $pull: { friends: req.params.friendId } },
                 { new: true }
@@ -85,10 +84,10 @@ try{
         }
     },
 
-    // Add Friend by Users UserId
+
     async addFriend(req, res) {
         try {
-            const addFriend = await uuser.findOneAndUpdate(
+            const addFriend = await user.findOneAndUpdate(
                 { _id: req.params.userId },
                 { $push: { friends: req.params.friendId } },
                 { new: true }
@@ -101,12 +100,12 @@ try{
 
 
 
-    // Create user
+
     async createUser(req, res) {
         try {
 
 
-            const postUser = await uuser.create(req.body);
+            const postUser = await user.create(req.body);
             res.status(200).json(postUser)
         } catch (err) {
             console.error(err)
