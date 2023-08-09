@@ -6,8 +6,8 @@ const userControllers = {
     async getUsers(req, res) {
         try {
 
-            const user = await user.find()
-            res.status(200).json(user)
+            const userData = await user.find()
+            res.status(200).json(userData)
         } catch (err) {
             console.log(err)
             
