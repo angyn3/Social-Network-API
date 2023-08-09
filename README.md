@@ -20,7 +20,7 @@ Upon utilizing a social network API, upon entering the designated command to ini
 `npm i`
 `npm run seed`
 `npm run watch`
-
+ 
 ## Dependencies
 
 - Express Routes
