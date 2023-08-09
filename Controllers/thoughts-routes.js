@@ -143,5 +143,4 @@ if(!user){
 
 
 
-
 module.exports = thoughtControllers;
